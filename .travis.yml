@@ -1,3 +1,5 @@
+language: generic 
+
 sudo: required
 services:
   - docker
@@ -5,5 +7,6 @@ services:
 before_install:
   - docker build -t tianxiongshi/docker-react -f Dockerfile.dev .
 
+
 script:
-  - docker run tianxiongshi/docker-react npm run test -- --coverage
+  - docker run -e CI=true tianxiongshi/docker-react npm run test -- --coverage
